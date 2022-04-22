@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.example.td_fragment_kotlin_20220422.databinding.Fragment1Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +36,15 @@ class Fragment1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_1, container, false)
+        val binding = Fragment1Binding.inflate(inflater, container, false)
+        val view = binding.root
+        binding.button.setOnClickListener{
+            Navigation
+                .findNavController(view)
+                .navigate(Fragment1Directions.actionFragment1ToFragment2("Mon Nom", 10))
+        }
+
+        return view
     }
 
     companion object {
